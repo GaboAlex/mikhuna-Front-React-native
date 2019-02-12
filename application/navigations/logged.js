@@ -10,6 +10,7 @@ import PedidoScreen from '../screens/Restaurants/Pedido';
 import ConfirmPedChefScreen from '../screens/Restaurants/ConfirmPedChef';
 import LogoutScreen from '../screens/Logout';
 import TipoUsuarioScreen from '../screens/TipoUsuario';
+import PlatoScreen from '../screens/Restaurants/Plato';
 import {View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -56,6 +57,33 @@ const mapsScreenStack = createStackNavigator(
     navigationOptions
 );
 
+const platosScreenStack = createStackNavigator(
+    {
+        PlatoScreen:{
+            screen: PlatoScreen,
+            navigationOptions: ({navigation})=>({
+                title:'Platos',
+                headerLeft:(
+                    <Icon name="bars"
+                            style={{marginLeft:20}}
+                            size={20}
+                            color="black"
+                            onPress={()=>{navigation.openDrawer()}}/>
+                ),
+                headerRight:(
+                    <Icon name="home"
+                            style={{marginRight:20}}
+                            size={20}
+                            color="black"
+                            onPress={()=>navigation.navigate("TipoUsuarioScreen")}/>
+                )
+            })
+        },
+    },
+    navigationOptions
+);
+
+
 const restaurantsScreenStack = createStackNavigator(
     {
         
@@ -79,10 +107,11 @@ const restaurantsScreenStack = createStackNavigator(
                 )
             })
         },
+
         AddRestaurant:{
             screen: AddRestaurantScreen,
             navigationOptions:({navigation})=>({
-                title:'Añadir Restaurant',
+                title:'Añadir Menús',
                 headerRight:(
                     <Icon name="home"
                             style={{marginRight:20}}
@@ -101,6 +130,7 @@ const restaurantsScreenStack = createStackNavigator(
                 )
             })
         },
+
         DetailRestaurant:{
             screen: DetailRestaurantScreen,
             navigationOptions:({navigation})=>({
@@ -126,6 +156,7 @@ const restaurantsScreenStack = createStackNavigator(
     },
     navigationOptions
 );
+
 const pedidosChefScreenStack = createStackNavigator(
     {
         
@@ -149,6 +180,7 @@ const pedidosChefScreenStack = createStackNavigator(
                 )
             })
         },
+
         ConfirmPedChef:{
             screen: ConfirmPedChefScreen,
             navigationOptions:({navigation})=>({
@@ -198,6 +230,7 @@ const restaurantsComensalScreenStack = createStackNavigator(
                 )
             })
         },
+
         Hacerpedidos:{
             screen: PedidoScreen,
             navigationOptions:({navigation})=>({
@@ -334,6 +367,18 @@ const drawerComensal = createDrawerNavigator(
 
 const drawerChef = createDrawerNavigator(
     {
+        platoScreen: {
+            screen: platosScreenStack,
+            navigationOptions:({navigation})=>(
+                {
+                    drawerLabel: "Platos",
+                    drawerIcon: ({tintColor})=>(<Icon name="home" 
+                                                        size={24}
+                                                        style={{color:tintColor}}>
+                                                </Icon>)
+                }
+            )
+        },
         RestScreen: {
             screen: restaurantsScreenStack,
             navigationOptions:({navigation})=>(
@@ -359,6 +404,7 @@ const drawerChef = createDrawerNavigator(
                 }
             )
         },
+
         PedidosChefScreen: {
             screen: pedidosChefScreenStack,
             navigationOptions:({navigation})=>(

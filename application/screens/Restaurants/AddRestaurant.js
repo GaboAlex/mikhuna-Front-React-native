@@ -8,7 +8,7 @@ import t from 'tcomb-form-native';
 const Form = t.form.Form;
 import * as firebase from 'firebase';
 
-export default class AddReastuarant extends Component{
+export default class AddRestaurant extends Component{
     constructor(){
         super();
         this.state = {

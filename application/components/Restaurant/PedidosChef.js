@@ -15,7 +15,7 @@ export default class Restaurant extends Component{
                 
 
                 <Text style={{marginBottom:10, marginTop:10}}>
-                    Gabrielle te esta haciendo un pedido !!!
+                    Gabriel te esta haciendo un pedido !!!
                 </Text>
                 
                 <AppButton

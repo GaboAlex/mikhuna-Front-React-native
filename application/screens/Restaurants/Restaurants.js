@@ -71,7 +71,7 @@ export default class Restaurantes extends Component{
 
     addRestaurant(){
         const navigateAction = NavigationActions.navigate({
-            routeName:'AddRestaurant'
+            routeName:'PlatoScreen'
         });
         this.props.navigation.dispatch(navigateAction);
     }
@@ -84,7 +84,7 @@ export default class Restaurantes extends Component{
         if(restaurants.length == 0){
             return(
                 <BackgroundImage source={require('../../../assets/images/fondo.jpg')}>
-                    <RestaurantEmpty text="No hay restaurants disponibles"></RestaurantEmpty>
+                    <RestaurantEmpty text="No hay menus disponibles"></RestaurantEmpty>
                     <RestaurantAddButton addRestaurant={this.addRestaurant.bind(this)}></RestaurantAddButton>
                 </BackgroundImage>
             )

@@ -48,7 +48,7 @@ const mapsScreenStack = createStackNavigator(
                             style={{marginRight:20}}
                             size={20}
                             color="black"
-                            onPress={()=>{}}/>
+                            onPress={()=>navigation.navigate("TipoUsuarioScreen")}/>
                 )
             })
         },

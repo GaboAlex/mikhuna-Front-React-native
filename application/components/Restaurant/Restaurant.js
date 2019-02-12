@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import AppButton from '../AppButton';
 import {Card, Text} from 'react-native-elements';
 import RestaurantRating from './RestaurantRating';
+// const util = require('util');
 
 export default class Restaurant extends Component{
     
     render(){
         const {restaurant} = this.props;
+        // console.log("this."+util.inspect(this.props.navigation,false,null));
+        // var {navigate} = this.props.navigation;
         
         return(
             <Card   title={restaurant.name}
@@ -29,6 +32,7 @@ export default class Restaurant extends Component{
                         bgColor="rgba(28,25,21,0.8)"
                         title="Volver"
                         action={()=>{}}
+                        // action={()=>navigate("TipoUsuarioScreen")}
                         iconName="arrow-left"
                         iconSize={30}
                         iconColor="#ffffff"/>                    

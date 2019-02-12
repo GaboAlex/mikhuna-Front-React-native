@@ -20,7 +20,7 @@ export default class Restaurantes extends Component{
 
         this.refRestaurants = firebase.database().ref().child('restaurants');
     }
-    //Cuando el componente ya ha cargado sus gatos
+    //Cuando el componente ya ha cargado sus datos
     //esta funcion se ejectura despues del metodo render()
     componentDidMount(){
         console.log("componentDidMount");

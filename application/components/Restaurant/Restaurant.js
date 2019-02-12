@@ -20,7 +20,7 @@ export default class Restaurant extends Component{
                 
                 <AppButton
                         bgColor="rgba(255,38,74,0.8)"
-                        title="Editar Restaurant"
+                        title="Editar Menú"
                         action={()=>{}}
                         iconName="pencil"
                         iconSize={30}

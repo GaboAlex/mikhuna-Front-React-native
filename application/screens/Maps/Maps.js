@@ -10,6 +10,7 @@ export default class Maps extends Component {
       latitude: null,
       longitude: null,
       error: null,
+      isLoading: true,
       restaurants:[]
     }
   }
@@ -43,19 +44,22 @@ export default class Maps extends Component {
       .then((responseJson) => {
         console.log(responseJson);
 
-        restaurants = [];
-        responseJson.forEach((marker,i)=>{
-          restaurants.push(
-            <Marker
-                  key={i}
-                  coordinate={{latitude:marker.ubicacion_latitud,
-                              longitude:marker.ubicacion_longitud}}
-            ></Marker>
-          )
-        })     
+        // restaurants = [];
+        // responseJson.forEach((marker,i)=>{
+        //   restaurants.push(
+        //     <Marker
+        //           key={i}
+        //           coordinate={{latitude:marker.ubicacion_latitud,
+        //                       longitude:marker.ubicacion_longitud}}
+        //           title={'Mi titulo'}
+        //           description={'Mi descripcion'}
+        //     ></Marker>
+        //   )
+        // })     
 
         this.setState({ 
-          restaurants: restaurants, 
+          isLoading: false,
+          restaurants: responseJson 
         });
       })
       .catch((error) => {
@@ -69,21 +73,35 @@ export default class Maps extends Component {
     const {error,latitude,longitude} = this.state;
 
     if(!latitude){
-      console.log("kkii"+latitude);
       return <PreLoader></PreLoader>
     }
     return (
       <View style={styles.container}>
       
-         <MapView  style={styles.container} initialRegion={{
+        <MapView  style={styles.container} initialRegion={{
                                   latitude: latitude,
                                   longitude: longitude,
-                                  latitudeDelta: 0.0922,
-                                  longitudeDelta: 0.0421
+                                  latitudeDelta: 0.0122,
+                                  longitudeDelta: 0.0121
                                 }}>
+          {this.state.isLoading ? null : this.state.restaurants.map((marker, index) => {
+            const coords = {
+                latitude: parseFloat(marker.ubicacion_latitud),
+                longitude: parseFloat(marker.ubicacion_longitud),
+            };
 
-        
-        {this.state.restaurants}
+            const metadata = `Status: Activo`;
+
+            return (
+                <MapView.Marker
+                    key={index}
+                    coordinate={coords}
+                    title={marker.usuario_name}
+                    description={metadata}
+                    image={require('../../../assets/images/chef.png')}
+                />
+            );
+          })}
         {/* <Marker
           coordinate={coords}
           title="Familia Vilchez"

@@ -156,8 +156,8 @@ export default class Plato extends Component{
 		  			showLoading
 		  			cancelIcon={{ type: 'font-awesome', name: 'chevron-left' }}
 		  			placeholder='Busca algún plato!' 
-		  			onChangeText={(text) => this.searchRestaurants(text)}
-		  			//onClear={this.resetSearch.bind(this)}
+		  			//onChangeText={(text) => this.searchRestaurants(text)}
+		  			onClear={this.resetSearch.bind(this)}
 		  			value={this.state.search}
 		  		/>
         );

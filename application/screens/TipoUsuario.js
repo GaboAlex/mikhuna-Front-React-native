@@ -27,7 +27,7 @@ export default class TipoUsuario extends Component{
                 <View>
                     <Card wrapperStyle={{paddingLeft:10}} title="¿Que deseas hacer hoy?">
                        
-                        <AppButton  bgColor="rgba(111,38,74,0.7)"
+                        <AppButton  bgColor="rgba(61,52,191,0.6)"
                                     title="Publicar Menu"
                                     action={this.openChefDrawer.bind(this)}
                                     iconName="male"
@@ -35,7 +35,7 @@ export default class TipoUsuario extends Component{
                                     iconColor="#fff"
                                     setWidth={false}/>
 
-                        <AppButton  bgColor="rgba(111,38,74,0.7)"
+                        <AppButton  bgColor="rgba(61,52,191,0.6)"
                                     title="Buscar Menu"
                                     action={this.openComensalDrawer.bind(this)}
                                     iconName="spoon"

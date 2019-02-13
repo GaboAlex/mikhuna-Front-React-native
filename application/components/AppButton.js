@@ -26,6 +26,7 @@ export default class AppButton extends Component{
                     borderWidth: 0,
                     borderRadius: 5,
                     marginBottom:5,
+                    marginTop:20,
                     width: width
                 }}
                 title={title}

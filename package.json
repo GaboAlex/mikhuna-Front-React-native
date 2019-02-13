@@ -12,9 +12,11 @@
     "firebase": "^5.7.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-datepicker": "^1.7.2",
     "react-native-elements": "^1.0.0-beta2",
     "react-native-maps": "^0.23.0",
     "react-native-selectme": "^1.2.3",
+    "react-native-ui-xg": "0.0.6",
     "react-native-vector-icons": "^6.2.0",
     "react-navigation": "^3.0.9",
     "tcomb-form-native": "^0.6.20"

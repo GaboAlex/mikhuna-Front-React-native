@@ -1,6 +1,7 @@
 import React from 'react';
 import {createStackNavigator, createDrawerNavigator, createAppContainer} from 'react-navigation';
 import RestaurantsScreen from '../screens/Restaurants/Restaurants';
+import AddMenuScreen from '../screens/Restaurants/AddMenu';
 import PedidosChefScreen from '../screens/Restaurants/PedidosChef';
 import RestaurantsComensalScreen from '../screens/Restaurants/RestaurantsComensal';
 import MapsScreen from '../screens/Maps/Maps';
@@ -19,7 +20,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const navigationOptions = {
     defaultNavigationOptions:{
         headerStyle:{
-            backgroundColor: 'rgba(116,83,13,0.9)',
+            backgroundColor: 'rgba(28,154,89,0.9)',
         },
         headerTitleStyle:{
             textAlign:'center',
@@ -83,6 +84,7 @@ const platosScreenStack = createStackNavigator(
     },
     navigationOptions
 );
+
 const AddPlato = createStackNavigator(
     {
         AddPlatoScreen:{
@@ -90,6 +92,34 @@ const AddPlato = createStackNavigator(
             screen: AddPlatoScreen,
             navigationOptions:({navigation})=>({
                 title:'Añadir Plato',
+                headerRight:(
+                    <Icon name="home"
+                            style={{marginRight:20}}
+                            size={20}
+                            color="black"
+                            onPress={()=>navigation.navigate("RestaurantsScreen")}>
+                    </Icon>
+                ),
+                headerLeft:(
+                    <Icon name="bars"
+                            style={{marginLeft:20}}
+                            size={20}
+                            color="black"
+                            onPress={()=>navigation.openDrawer()}>
+                    </Icon>
+                )
+            })
+        },
+    },
+    navigationOptions
+);
+const AddMenu = createStackNavigator(
+    {
+        AddMenuScreen:{
+
+            screen: AddMenuScreen,
+            navigationOptions:({navigation})=>({
+                title:'Añadir Menu',
                 headerRight:(
                     <Icon name="home"
                             style={{marginRight:20}}
@@ -157,8 +187,6 @@ const restaurantsScreenStack = createStackNavigator(
                 )
             })
         },
-
-        
 
         DetailRestaurant:{
             screen: DetailRestaurantScreen,
@@ -402,7 +430,7 @@ const drawerChef = createDrawerNavigator(
             navigationOptions:({navigation})=>(
                 {
                     drawerLabel: "Menu",
-                    drawerIcon: ({tintColor})=>(<Icon name="home" 
+                    drawerIcon: ({tintColor})=>(<Icon name="ios-book" 
                                                         size={24}
                                                         style={{color:tintColor}}>
                                                 </Icon>)
@@ -422,17 +450,30 @@ const drawerChef = createDrawerNavigator(
                 }
             )
         },
+
         AddPlato:{
             screen: AddPlato,
             navigationOptions:({navigation})=>(
                 {
                     drawerLabel: "Agregar Plato",
-                    drawerIcon: ({tintColor})=>(<Icon name="home" 
+                    drawerIcon: ({tintColor})=>(<Icon name="md-settings" 
                                                         size={24}
                                                         style={{color:tintColor}}>
                                                 </Icon>)
                 }
             )
+        },
+
+        AddMenu:{
+            screen: AddMenu,
+            navigationOptions:({navigation})=>(
+                {
+                    drawerLabel:"Agregar Menú",
+                    drawerIcon:({tintColor})=>(<Icon name="home"
+                                                    size={24}
+                                                    style={{color:tintColor}}>
+                                            </Icon>)
+            })
         },
 
         TipoUsuarioScreen: {
@@ -538,7 +579,7 @@ const miNavegacionPrincipal = createDrawerNavigator(
         
     },
     {
-        drawerBackgroundColor: 'rgba(116,83,13,0.9)',
+        drawerBackgroundColor: 'rgba(28,154,89,0.3)',
         contentOptions: {
             activeTintColor: 'white',
             activeBackgroundColor: 'transparent',

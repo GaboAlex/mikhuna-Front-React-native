@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image , Modal, Text, TouchableHighlight, Alert} from 'react-native';
 import { MapView, Marker } from "expo";
 import PreLoader from "../../components/PreLoader";
 export default class Maps extends Component {
@@ -11,8 +11,46 @@ export default class Maps extends Component {
       longitude: null,
       error: null,
       isLoading: true,
-      restaurants:[]
+      restaurants:[],
+      modalVisible: false,
     }
+  }
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
+  Modal(){
+    return(
+      <View style={{marginTop: 22}}>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+          }}>
+          <View style={{marginTop: 22}}>
+            <View>
+              <Text>Hello World!</Text>
+
+              <TouchableHighlight
+                onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible);
+                }}>
+                <Text>Hide Modal</Text>
+              </TouchableHighlight>
+            </View>
+          </View>
+        </Modal>
+
+        <TouchableHighlight
+          onPress={() => {
+            this.setModalVisible(true);
+          }}>
+          <Text>Show Modal</Text>
+        </TouchableHighlight>
+      </View>
+    )
   }
 
   componentWillMount(){
@@ -90,7 +128,7 @@ export default class Maps extends Component {
                 longitude: parseFloat(marker.ubicacion_longitud),
             };
 
-            const metadata = `Status: Activo`;
+            const metadata = `Menu: Lomo Saltado`;
 
             return (
                 <MapView.Marker
@@ -98,6 +136,7 @@ export default class Maps extends Component {
                     coordinate={coords}
                     title={marker.usuario_name}
                     description={metadata}
+                    onPress={()=>this.Modal()}
                     image={require('../../../assets/images/chef.png')}
                 />
             );

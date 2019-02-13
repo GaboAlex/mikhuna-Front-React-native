@@ -90,10 +90,10 @@ export default class Plato extends Component{
     //      });
     //  }
 
-    restaurantDetail(restaurant){
+    restaurantDetail(){
         const navigateAction = NavigationActions.navigate({
-            routeName:'DetailRestaurant',
-            params:{restaurant:restaurant}
+            routeName:'AddMenu',
+            // params:{restaurant:restaurant}
         });
         this.props.navigation.dispatch(navigateAction);
     }
@@ -105,8 +105,8 @@ export default class Plato extends Component{
                         roundAvatar
                         title={`${plato.plato_nombre}`}
                         leftAvatar={{source: this.state.restaurant_logo}}
-                        onPress={()=>this.restaurantDetail(restaurant)}>
-                        {/* rightIcon={{name:'arrow-right',type:'font-awesome',style:styles.listIconStyle}}> */}
+                        onPress={()=>this.restaurantDetail()}>
+                        rightIcon={{name:'arrow-right',type:'font-awesome',style:styles.listIconStyle}}>
             </ListItem>
         )
     }

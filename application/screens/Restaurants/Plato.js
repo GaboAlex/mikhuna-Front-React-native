@@ -138,9 +138,9 @@ export default class Plato extends Component{
     // }
     
 
-    addRestaurant(){
+    addPlato(){
         const navigateAction = NavigationActions.navigate({
-            routeName:'AddRestaurant'
+            routeName:'AddPlato'
         });
         this.props.navigation.dispatch(navigateAction);
     }
@@ -166,7 +166,7 @@ export default class Plato extends Component{
                 <BackgroundImage source={require('../../../assets/images/fondo.jpg')}>
                     {searchBar}
                     <RestaurantEmpty text="No hay menús disponibles"></RestaurantEmpty>
-                    <PlatoAddButton addRestaurant={this.addRestaurant.bind(this)}></PlatoAddButton>
+                    <PlatoAddButton addPlato={this.addPlato.bind(this)}></PlatoAddButton>
                 </BackgroundImage>
             )
         }
@@ -181,7 +181,7 @@ export default class Plato extends Component{
                             keyExtractor={(data)=>{return data.id}}>
                     
                 </FlatList>
-                <PlatoAddButton addRestaurant={this.addRestaurant.bind(this)}></PlatoAddButton>
+                <PlatoAddButton addPlato={this.addPlato.bind(this)}></PlatoAddButton>
                 
             </BackgroundImage>
         )

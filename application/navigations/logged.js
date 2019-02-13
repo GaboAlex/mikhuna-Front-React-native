@@ -5,6 +5,7 @@ import PedidosChefScreen from '../screens/Restaurants/PedidosChef';
 import RestaurantsComensalScreen from '../screens/Restaurants/RestaurantsComensal';
 import MapsScreen from '../screens/Maps/Maps';
 import AddRestaurantScreen from '../screens/Restaurants/AddRestaurant';
+import AddPlatoScreen from '../screens/Restaurants/AddPlato'
 import DetailRestaurantScreen from '../screens/Restaurants/DetailRestaurant';
 import PedidoScreen from '../screens/Restaurants/Pedido';
 import ConfirmPedChefScreen from '../screens/Restaurants/ConfirmPedChef';
@@ -82,8 +83,34 @@ const platosScreenStack = createStackNavigator(
     },
     navigationOptions
 );
+const AddPlato = createStackNavigator(
+    {
+        AddPlatoScreen:{
 
-
+            screen: AddPlatoScreen,
+            navigationOptions:({navigation})=>({
+                title:'Añadir Plato',
+                headerRight:(
+                    <Icon name="home"
+                            style={{marginRight:20}}
+                            size={20}
+                            color="black"
+                            onPress={()=>navigation.navigate("RestaurantsScreen")}>
+                    </Icon>
+                ),
+                headerLeft:(
+                    <Icon name="bars"
+                            style={{marginLeft:20}}
+                            size={20}
+                            color="black"
+                            onPress={()=>navigation.openDrawer()}>
+                    </Icon>
+                )
+            })
+        },
+    },
+    navigationOptions
+);
 const restaurantsScreenStack = createStackNavigator(
     {
         
@@ -130,6 +157,8 @@ const restaurantsScreenStack = createStackNavigator(
                 )
             })
         },
+
+        
 
         DetailRestaurant:{
             screen: DetailRestaurantScreen,
@@ -367,6 +396,20 @@ const drawerComensal = createDrawerNavigator(
 
 const drawerChef = createDrawerNavigator(
     {
+        
+        RestScreen: {
+            screen: restaurantsScreenStack,
+            navigationOptions:({navigation})=>(
+                {
+                    drawerLabel: "Menu",
+                    drawerIcon: ({tintColor})=>(<Icon name="home" 
+                                                        size={24}
+                                                        style={{color:tintColor}}>
+                                                </Icon>)
+                }
+            )
+        },
+
         platoScreen: {
             screen: platosScreenStack,
             navigationOptions:({navigation})=>(
@@ -379,11 +422,11 @@ const drawerChef = createDrawerNavigator(
                 }
             )
         },
-        RestScreen: {
-            screen: restaurantsScreenStack,
+        AddPlato:{
+            screen: AddPlato,
             navigationOptions:({navigation})=>(
                 {
-                    drawerLabel: "Menu",
+                    drawerLabel: "Agregar Plato",
                     drawerIcon: ({tintColor})=>(<Icon name="home" 
                                                         size={24}
                                                         style={{color:tintColor}}>

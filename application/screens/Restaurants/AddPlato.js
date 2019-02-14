@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {options, Plato} from '../../forms/plato';
 import {StyleSheet, View, Alert,Text,Picker} from 'react-native';
 import AppButton from '../../components/AppButton';
+import {NavigationActions} from 'react-navigation';
 import BackgroundImage from '../../components/BackgroundImage';
 import {Card} from "react-native-elements";
 import t from 'tcomb-form-native';
@@ -35,7 +36,7 @@ export default class AddPlato extends Component{
         console.log(validate);
 
         var url = 'https://mikhuna-app.herokuapp.com/API/create-plato';
-        var data = {plato_nombre:validate.name, t_categoria_id: '1' };
+        var data = {nombre:validate.name, categoria_id: '1' };
 
         fetch(url, {
             method: 'POST', // or 'PUT'
@@ -46,23 +47,17 @@ export default class AddPlato extends Component{
         }).then(res => res.json())
         .catch(error => console.error('Error:', error))
         .then(response => console.log('Success:', response));
-        return;
-        if(validate){
-            //en la variable key, se almaenará un ID único como cabecera del nuevo
-            //registro (restaurante) y tendrá la forma [ASD3refsDF4sdf83]
-            //hasta ahora, solo se obtiene ese ID, no se agrega nada a la BD aún
-            // const key = firebase.database().ref().child('restaurants').push().key;
-            // firebase.database().ref().child('restaurants').child(key).set({
-            //     name:validate.name,
-
-            // }).then(()=>{
-            //     Alert.alert("Exito!","El restaurante se ha creado con exito");
-            //     this.props.navigation.navigate('RestaurantsScreen');
-            // }).catch((error)=>{
-            //     Alert.alert("Error","Ha ocurrido un error garrafal");
-            // })
-
-        }
+    }
+    renderMenu(){
+        const navigateAction = NavigationActions.navigate({
+            routeName:'AddMenu',
+            // params:{restaurant:restaurant}
+        });
+        this.props.navigation.dispatch(navigateAction);
+    }
+    mixFuncWithoutArrow(){
+        this.save();
+        this.renderMenu();
     }
 
     render(){
@@ -95,7 +90,7 @@ export default class AddPlato extends Component{
                         <AppButton
                                 bgColor="rgba(255,38,74,0.9)"
                                 title="Agregar"
-                                action={this.save.bind(this)}
+                                action={this.mixFuncWithoutArrow.bind(this)}
                                 iconName="plus"
                                 iconSize={30}
                                 iconColor="#ffffff"/>

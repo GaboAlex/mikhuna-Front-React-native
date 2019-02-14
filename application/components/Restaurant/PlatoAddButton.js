@@ -8,7 +8,7 @@ export default class PlatoAddButton extends Component{
         return(
             <View style={styles.buttonContainer}>
             
-                <AppButton bgColor="rgba(191,17,40,0.28)"
+                <AppButton bgColor="rgba(61,52,191,0.6)"
                             title="Añadir un plato"
                             action={addPlato}
                             iconName="plus"

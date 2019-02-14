@@ -22,7 +22,7 @@ export default class Restaurant extends Component{
                 </Text>
                 
                 <AppButton
-                        bgColor="rgba(255,38,74,0.8)"
+                        bgColor="rgba(61,52,191,0.6)"
                         title="Editar Menú"
                         action={()=>{}}
                         iconName="pencil"

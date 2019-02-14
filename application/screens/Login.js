@@ -66,7 +66,7 @@ export default class Login extends Component{
                                 type={this.user}
                                 options={this.options}
                                 />
-                        <AppButton  bgColor="rgba(111,38,74,0.7)"
+                        <AppButton  bgColor="rgba(61,52,191,0.6)"
                                     title="Login"
                                     action={this.login.bind(this)}
                                     iconName="sign-in"

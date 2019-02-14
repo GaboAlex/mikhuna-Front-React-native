@@ -20,7 +20,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const navigationOptions = {
     defaultNavigationOptions:{
         headerStyle:{
-            backgroundColor: 'rgba(28,154,89,0.9)',
+            backgroundColor: 'rgba(17,54,31,0.9)',
         },
         headerTitleStyle:{
             textAlign:'center',
@@ -408,7 +408,7 @@ const drawerComensal = createDrawerNavigator(
         },
     },
     {
-        drawerBackgroundColor: 'rgba(116,83,13,0.9)',
+        drawerBackgroundColor: 'rgba(17,54,31,0.9)',
         contentOptions: {
             activeTintColor: 'white',
             activeBackgroundColor: 'transparent',
@@ -516,7 +516,7 @@ const drawerChef = createDrawerNavigator(
         },  
     },
     {
-        drawerBackgroundColor: 'rgba(116,83,13,0.9)',
+        drawerBackgroundColor: 'rgba(17,54,31,0.9)',
         contentOptions: {
             activeTintColor: 'white',
             activeBackgroundColor: 'transparent',
@@ -579,7 +579,7 @@ const miNavegacionPrincipal = createDrawerNavigator(
         
     },
     {
-        drawerBackgroundColor: 'rgba(28,154,89,0.3)',
+        drawerBackgroundColor: 'rgba(17,54,31,0.9)',
         contentOptions: {
             activeTintColor: 'white',
             activeBackgroundColor: 'transparent',
